@@ -51,6 +51,8 @@ namespace TLWebApi.Repositories
         {
             var old = _context.Trails.SingleOrDefault(x => x.Id == trail.Id);
             _context.Trails.Remove(old);
+            trail.AutoType = null;
+            trail.TrailCategory = null;
             _context.Add(trail);
             _context.SaveChanges();
         }

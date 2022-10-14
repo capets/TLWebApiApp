@@ -9,15 +9,15 @@ namespace TLWebApi.EntityConfigurations
         public void Configure(EntityTypeBuilder<Trail> builder)
         {            
             builder.Property(x => x.AutoTypeId)
-                .IsRequired();
+                .IsRequired();           
 
-            builder.HasOne(x => x.AutoType)
-                .WithMany()
-                .OnDelete(DeleteBehavior.NoAction);
+            //builder.HasOne(x => x.AutoType)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasOne(x => x.TrailCategory)
-               .WithMany()
-               .OnDelete(DeleteBehavior.NoAction);
+            //builder.HasOne(x => x.TrailCategory)
+            //   .WithMany()
+            //   .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

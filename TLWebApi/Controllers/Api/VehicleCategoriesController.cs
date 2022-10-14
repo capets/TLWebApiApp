@@ -43,7 +43,7 @@ namespace TLWebApi.Controllers.Api
         }
 
         // PUT api/<VehicleCategoriesController>/5
-        [HttpPut("{id}")]
+        [HttpPut()]
         public void Put([FromBody] VehicleCategory value)
         {
             _unitOfWork

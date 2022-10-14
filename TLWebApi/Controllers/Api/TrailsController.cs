@@ -43,9 +43,9 @@ namespace TLWebApi.Controllers.Api
         }
 
         // PUT api/<TrailsController>/5
-        [HttpPut("{id}")]
+        [HttpPut()]
         public void Put([FromBody] Trail value)
-        {
+        {           
             _unitOfWork
                 .Trails
                 .Update(value);

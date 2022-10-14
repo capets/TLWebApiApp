@@ -15,6 +15,16 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CorsPolicy",
+                     policy => policy
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .SetIsOriginAllowed(x => true)
+                   .AllowCredentials());
+});
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSwaggerDocument(options =>
@@ -60,6 +70,7 @@ app.UseSwaggerUi3(options =>
 });
 
 app.UseRouting();
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -9,7 +9,8 @@ namespace TLWebApi.EntityConfigurations
         public void Configure(EntityTypeBuilder<TrailCategory> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).IsRequired().HasMaxLength(255);
+            builder.Property(x => x.Name).IsRequired()
+                .HasMaxLength(255);
             builder.HasData(
                 new TrailCategory { Id = 1, Name = "Remorca" },
                 new TrailCategory { Id = 2, Name = "SemiRemorca" },

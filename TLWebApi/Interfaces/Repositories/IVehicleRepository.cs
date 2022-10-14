@@ -4,11 +4,11 @@ namespace TLWebApi.Interfaces.Repositories
 {
     public interface IVehicleRepository
     {
-        void Add(Vehicle vehicle);
-        Vehicle GetVehicle(int id);
-        IEnumerable<Vehicle> GetVehicles();
+        void Add(Truck vehicle);
+        Truck GetVehicle(int id);
+        IEnumerable<Truck> GetVehicles();
         void Remove(int id);
-        void Remove(Vehicle vehicle);
-        void Update(Vehicle vehicle);
+        void Remove(Truck vehicle);
+        void Update(Truck vehicle);
     }
 }

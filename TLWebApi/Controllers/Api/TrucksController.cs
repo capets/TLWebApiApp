@@ -10,50 +10,49 @@ namespace TLWebApi.Controllers.Api
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class VehiclesController : ControllerBase
+    public class TrucksController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        public VehiclesController(IUnitOfWork unitOfWork)
+        public TrucksController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        // GET: api/<VehicleController>
+        // GET: api/<TrucksController>
         [HttpGet]
-        public IEnumerable<Vehicle> Get()
+        public IEnumerable<Truck> Get()
         {
             return _unitOfWork
                 .Vehicles
                 .GetVehicles();
         }
 
-        // GET api/<VehicleController>/5
+        // GET api/<TrucksController>/5
         [HttpGet("{id}")]
-        public Vehicle Get(int id)
+        public Truck Get(int id)
         {
             return _unitOfWork
                 .Vehicles
                 .GetVehicle(id);
         }
 
-        // POST api/<VehicleController>
+        // POST api/<TrucksController>
         [HttpPost]
-        public void Post([FromBody] Vehicle value)
+        public void Post([FromBody] Truck value)
         {
             _unitOfWork
                 .Vehicles
                 .Add(value);
         }
-
-        // PUT api/<VehicleController>/5
-        [HttpPut("{id}")]
-        public void Put([FromBody] Vehicle value)
+        
+        [HttpPut()]
+        public void Put([FromBody] Truck value)
         {
             _unitOfWork
                 .Vehicles
                 .Update(value);
         }
 
-        // DELETE api/<VehicleController>/5
+        // DELETE api/<TrucksController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -3,21 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TLWebApi.Data;
 
 #nullable disable
 
-namespace TLWebApi.Data.Migrations
+namespace TLWebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220919113127_AddDriversController")]
+    partial class AddDriversController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -239,7 +241,7 @@ namespace TLWebApi.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AutoTypes", (string)null);
+                    b.ToTable("AutoTypes");
 
                     b.HasData(
                         new
@@ -259,6 +261,48 @@ namespace TLWebApi.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("TLWebApi.Models.Driver", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LicExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("MedExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NationalExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NationalId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PassportExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TahoExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Drivers");
+                });
+
             modelBuilder.Entity("TLWebApi.Models.Trail", b =>
                 {
                     b.Property<int>("Id")
@@ -274,8 +318,29 @@ namespace TLWebApi.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("CertAgrExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertCVerdeExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertCascoExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertCemtExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertRcaExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertStingExpDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("Height")
                         .HasColumnType("float");
+
+                    b.Property<DateTime?>("ItpExpDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("Length")
                         .HasColumnType("float");
@@ -303,7 +368,7 @@ namespace TLWebApi.Data.Migrations
 
                     b.HasIndex("TrailCategoryId");
 
-                    b.ToTable("Trails", (string)null);
+                    b.ToTable("Trails");
                 });
 
             modelBuilder.Entity("TLWebApi.Models.TrailCategory", b =>
@@ -320,10 +385,10 @@ namespace TLWebApi.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TrailCategories", (string)null);
+                    b.ToTable("TrailCategories");
                 });
 
-            modelBuilder.Entity("TLWebApi.Models.Vehicle", b =>
+            modelBuilder.Entity("TLWebApi.Models.Truck", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -338,6 +403,27 @@ namespace TLWebApi.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("CertAgrExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertCVerdeExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertCascoExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertCemtExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertRcaExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CertStingExpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CertTahoExpDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("FuelConsumptionSummer")
                         .HasColumnType("float");
 
@@ -349,6 +435,9 @@ namespace TLWebApi.Data.Migrations
 
                     b.Property<double>("Height")
                         .HasColumnType("float");
+
+                    b.Property<DateTime?>("ItpExpDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("Length")
                         .HasColumnType("float");
@@ -376,7 +465,7 @@ namespace TLWebApi.Data.Migrations
 
                     b.HasIndex("VehicleCategoryId");
 
-                    b.ToTable("Vehicles", (string)null);
+                    b.ToTable("Trucks");
                 });
 
             modelBuilder.Entity("TLWebApi.Models.VehicleCategory", b =>
@@ -394,7 +483,7 @@ namespace TLWebApi.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VehicleCategories", (string)null);
+                    b.ToTable("VehicleCategories");
 
                     b.HasData(
                         new
@@ -465,13 +554,13 @@ namespace TLWebApi.Data.Migrations
                     b.HasOne("TLWebApi.Models.AutoType", "AutoType")
                         .WithMany()
                         .HasForeignKey("AutoTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TLWebApi.Models.TrailCategory", "TrailCategory")
                         .WithMany()
                         .HasForeignKey("TrailCategoryId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AutoType");
@@ -479,18 +568,18 @@ namespace TLWebApi.Data.Migrations
                     b.Navigation("TrailCategory");
                 });
 
-            modelBuilder.Entity("TLWebApi.Models.Vehicle", b =>
+            modelBuilder.Entity("TLWebApi.Models.Truck", b =>
                 {
                     b.HasOne("TLWebApi.Models.AutoType", "AutoType")
                         .WithMany()
                         .HasForeignKey("AutoTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TLWebApi.Models.VehicleCategory", "VehicleCategory")
                         .WithMany()
                         .HasForeignKey("VehicleCategoryId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AutoType");

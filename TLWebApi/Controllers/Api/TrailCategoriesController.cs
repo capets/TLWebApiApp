@@ -15,6 +15,7 @@ namespace TLWebApi.Controllers.Api
         {
             _unitOfWork = unitOfWork;
         }
+
         // GET: api/<VehicleCategoriesController>
         [HttpGet]
         public IEnumerable<TrailCategory> Get()
